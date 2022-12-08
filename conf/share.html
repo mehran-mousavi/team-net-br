@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Share Link</title>
-    <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div id="vless">
@@ -18,8 +18,18 @@
 </body>
 
 <script>
-
-var Vless_UUID = "${_Vless_UUID}";
+function docReady(fn) {
+    // see if DOM is already available
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+        // call on next available tick
+        setTimeout(fn, 1);
+    } else {
+        document.addEventListener("DOMContentLoaded", fn);
+    }
+}    
+    
+    docReady(function() {
+ var Vless_UUID = "${_Vless_UUID}";
 var Vless_Path = "${_Vless_Path}?ed=2048";
 var Vmess_UUID = "${_Vmess_UUID}";
 var Vmess_Path = "${_Vmess_Path}?ed=2048";
@@ -31,6 +41,8 @@ new QRCode(document.getElementById('vless_qr'), Vless_link);
 var Vmess_link = `vmess://${Vmess_UUID}@${location.hostname}:443?path=${encodeURIComponent(Vmess_Path)}&security=tls&encryption=none&type=ws#${location.hostname}-Vmess`
 document.querySelector("#vmess code").textContent = Vmess_link;
 new QRCode(document.getElementById('vmess_qr'), Vmess_link);
+});
+
 
 </script>
 </html>

@@ -5,7 +5,7 @@
   "env": {
     "ProxySite": {
       "description": "反代一个网站，例如：mirror.umd.edu，不填写表示使用本地静态网页文件。",
-      "value": "vn.reviluner.ir"
+      "value": "withered-glade-e3a7.mehran-mousavi.workers.dev"
     },
 
     "Vless_UUID": {
@@ -37,7 +37,7 @@
        "value": "latest"
      }
   },
-  "website": "",
+  "website": "vn.reviluner.ir",
   "repository": "",
   "stack": "container"
  }
